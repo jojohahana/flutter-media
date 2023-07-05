@@ -1,5 +1,8 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_media/notifier/latihan_notifier.dart';
+import 'package:image_picker/image_picker.dart';
 
 class LatihanImage2 extends StatefulWidget {
   const LatihanImage2({super.key});
@@ -60,11 +63,28 @@ class _LatihanImage2State extends State<LatihanImage2> {
     );
   }
 
-  _onGalleryView() async {}
+  _onGalleryView() async {
+    final ImagePicker picker = ImagePicker();
+    final pickedFile = await picker.pickImage(source: ImageSource.gallery);
+    if (pickedFile != null) {
+      notifier.setImageFile(pickedFile);
+      notifier.setImagePath(pickedFile.path);
+    }
+  }
 
-  _onCameraView() async {}
+  _onCameraView() async {
+    final ImagePicker picker = ImagePicker();
+    final pickedFile = await picker.pickImage(source: ImageSource.camera);
+    if (pickedFile != null) {
+      notifier.setImageFile(pickedFile);
+      notifier.setImagePath(pickedFile.path);
+    }
+  }
 
   Widget _showImage() {
-    return const Placeholder();
+    final imagePath = notifier.imagePath;
+    return Image.file(
+      File(imagePath.toString()),
+    );
   }
 }
