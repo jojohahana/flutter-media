@@ -10,18 +10,14 @@ class LatihanImage2 extends StatefulWidget {
 
 class _LatihanImage2State extends State<LatihanImage2> {
   LatihanNotifier notifier = LatihanNotifier();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Camera Project"),
-        actions: [
-          IconButton(
-            onPressed: () => _onUpload(),
-            icon: const Icon(Icons.upload),
-            tooltip: "Unggah",
-          ),
-        ],
+        title: const Text("Belajar Flutter Media"),
+        centerTitle: true,
+        backgroundColor: Colors.black,
       ),
       body: SafeArea(
         child: ListenableBuilder(
@@ -54,10 +50,6 @@ class _LatihanImage2State extends State<LatihanImage2> {
                       onPressed: () => _onCameraView(),
                       child: const Text("Camera"),
                     ),
-                    ElevatedButton(
-                      onPressed: () => _onCustomCameraView(),
-                      child: const Text("Custom Camera"),
-                    ),
                   ],
                 ),
               )
@@ -68,15 +60,11 @@ class _LatihanImage2State extends State<LatihanImage2> {
     );
   }
 
-  _onUpload() async {}
-
   _onGalleryView() async {}
 
   _onCameraView() async {}
 
-  _onCustomCameraView() async {}
-
   Widget _showImage() {
-    return Container();
+    return const Placeholder();
   }
 }
